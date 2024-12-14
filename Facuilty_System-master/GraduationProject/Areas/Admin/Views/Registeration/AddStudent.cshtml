@@ -1,0 +1,158 @@
+﻿@model Models.ViewModels.StudentVM
+@section Scripts {
+    <partial name="_TempDataPartial.cshtml">
+        <partial name="_ValidationScriptsPartial.cshtml">
+}
+
+        <div class="container mt-5">
+            <h2 class="text-center mb-4">Add New Student</h2>
+            <form asp-action="AddStudent" enctype="multipart/form-data" class="needs-validation" novalidate>
+
+                <div class="mb-3">
+                    <label class="form-label">SSN</label>
+                    <input type="text" class="form-control" asp-for="SSN" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid SSN.
+                    </div>
+                    <span asp-validation-for="SSN" class="text-warning"></span>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" asp-for="FName" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid First Name.
+                        </div>
+                        <span asp-validation-for="FName" class="text-warning"></span>
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label">Middle Name</label>
+                        <input type="text" class="form-control" asp-for="MName" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid Middle Name.
+                        </div>
+                        <span asp-validation-for="MName" class="text-warning"></span>
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" asp-for="LName" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid Last Name.
+                        </div>
+                        <span asp-validation-for="LName" class="text-warning"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Upload Image</label>
+                    <input type="file" class="form-control" asp-for="ImgUrl" required>
+                    <div class="invalid-feedback">
+                        Please upload an image.
+                    </div>
+                    <span asp-validation-for="ImgUrl" class="text-warning"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="gender" class="form-label">Gender</label>
+                    <select class="form-select" asp-for="Gender" required>
+                        <option value="">Select Gender</option>
+                @foreach (var gender in ViewBag.EnumGender)
+                {
+                            <option value="@gender">@gender</option>
+                }
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a gender.
+                    </div>
+                    <span asp-validation-for="Gender" class="text-warning"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" asp-for="Address" required>
+                    <div class="invalid-feedback">
+                        Please provide an address.
+                    </div>
+                    <span asp-validation-for="Address" class="text-warning"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" asp-for="Email" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid email address.
+                    </div>
+                    <span asp-validation-for="Email" class="text-warning"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="department" class="form-label">Department</label>
+                    <select class="form-select" asp-for="DepartmentId" asp-items="ViewBag.department" required>
+                        <option value="">Select Department</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a department.
+                    </div>
+                    <span asp-validation-for="DepartmentId" class="text-warning"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="level" class="form-label">Level</label>
+                    <select class="form-select" asp-for="Level" required>
+                        <option value="">Select Level</option>
+                @foreach (var level in ViewBag.EnumLevel)
+                {
+                            <option value="@level">@level</option>
+                }
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a level.
+                    </div>
+                    <span asp-validation-for="Level" class="text-warning"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="nationality" class="form-label">Nationality</label>
+                    <input type="text" class="form-control" asp-for="Nationailty" required>
+                    <div class="invalid-feedback">
+                        Please provide a nationality.
+                    </div>
+                    <span asp-validation-for="Nationailty" class="text-warning"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="birthDate" class="form-label">Birth Date</label>
+                    <input type="date" class="form-control" asp-for="BirthDate" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid birth date.
+                    </div>
+                    <span asp-validation-for="BirthDate" class="text-warning"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Add</button>
+            </form>
+        </div>
+
+@* @section Scripts {
+        <script>
+        (function () {
+        'use strict';
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation');
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+        }
+
+        form.classList.add('was-validated');
+        }, false);
+        });
+        })();
+        </script>
+        } *@
